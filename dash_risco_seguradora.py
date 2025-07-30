@@ -19,6 +19,7 @@ def validar_senha():
         st.session_state["erro_autenticacao"] = True
 
 if not st.session_state["autenticado"]:
+    st.image("Logo.png", width=220)
     st.title("🔒 Acesso Restrito")
     st.text_input("Digite a senha:", type="password", key="senha_digitada", on_change=validar_senha)
     if st.session_state.get("erro_autenticacao", False):
@@ -52,8 +53,7 @@ st.markdown("""
 st.set_page_config(page_title="Dashboard de Similaridade entre Seguradoras", layout="wide")
 
 # 1. Carrega base original
-caminho = "C:/Users/gabriel.d/Downloads/apoio_cluster.xlsx"
-df = pd.read_excel(caminho)
+df = pd.read_excel("apoio_cluster.xlsx")
 df["Critério"] = df["Critério"].fillna(method="ffill")
 
 # 2. Transformar em formato longo
